@@ -1,0 +1,47 @@
+﻿@model BitchAbout.Models.Rant
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Fuck 'Em</h2>
+
+<h3>Congrats On Getting Over It. Celebrate with a beer and a joint!</h3>
+<br />
+<a target="_blank" href="https://dicksbymail.com/?gclid=Cj0KCQjwsMDeBRDMARIsAKrOP7HfwVNUDsDO301JXfIyzGsLN6UFVh5xQAKCfXsqWYU9ILUHQS2SMJkaAplLEALw_wcB">Send A Bag Of Dicks??</a>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Summary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Summary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Review)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Review)
+        </dd>
+
+
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RantId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+
+        <a asp-action="Index">Nope. Nevermind, Still Mad.</a>
+    </form>
+    <img src="https://i.imgur.com/oKfj7g0.gif?noredirect" alt="Go Away" height="400" width="650">
+
+</div>

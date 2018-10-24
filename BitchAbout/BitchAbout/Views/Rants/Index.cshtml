@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BitchAbout.Models.Rant>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Shit I've Dealt With</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Summary)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Review)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Review)
+            </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RantId">Still Pissed</a> |
+                @*<a asp-action="Details" asp-route-id="@item.RantId">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.RantId">Over It</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -67,7 +67,7 @@ namespace BitchAbout
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Rants}/{action=Create}/{id?}");
             });
         }
     }

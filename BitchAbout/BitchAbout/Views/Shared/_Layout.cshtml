@@ -26,13 +26,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BitchAbout</a>
+                <a asp-area="" asp-controller="" asp-action="" class="navbar-brand">BitchAbout</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Rants" asp-action="Create">Home</a></li>
+                    <li><a asp-area="" asp-controller="Rants" asp-action="Details">Professional Rants</a></li>
+                    @*<li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
+                    <li><a asp-area="" asp-controller="Rants" asp-action="Index">Your Baggage</a></li>
+
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
