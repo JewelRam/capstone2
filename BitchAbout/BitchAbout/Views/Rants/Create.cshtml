@@ -1,0 +1,42 @@
+﻿@model BitchAbout.Models.Rant
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div id="home-page">
+    <h2>New Rant</h2>
+
+    <h1>What Pissed You Off Today?</h1>
+    <img src="https://media.giphy.com/media/NLO8cy5i56v9S/giphy.gif" alt="Rage" height="300" width="450">
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Summary" class="control-label">REALLY let it out</label>
+                    <textarea id="input-fields" asp-for="Summary" class="form-control" ></textarea>
+                    <span asp-validation-for="Summary" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                        <label asp-for="Review" class="control-label"></label>
+                        <input asp-for="Review" class="form-control" />
+                        <span asp-validation-for="Review" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <h4>Here are some helpful links for calming down:</h4>
+   <button id="youtube-button"> <a target="_blank" href="https://www.youtube.com/watch?v=ig_EX-8jEkM">Animal Fails</a></button><br />
+    <button id="youtube-button"><a target="_blank" href="https://www.youtube.com/watch?v=mqyg4IEgOrw">Girl Fails</a></button><br />
+  <button id="youtube-button"> <a target="_blank" href="https://www.youtube.com/watch?v=mqyg4IEgOrw">Scare Pranks</a></button>
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
