@@ -4,9 +4,14 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Watch the cute goat try to fight the chicken a couple times and calm down!!</h2>
 
-<h4>Rant</h4>
+<h4>
+    Here is where we take deep breaths and try to re-word our angry rant into something less rage-filled and more
+    "professional" for possible use.
+</h4>
+<img src="https://imgur.com/1usJE8W.gif" alt="Cuteness" height="400" width="550">
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,12 +20,12 @@
             <input type="hidden" asp-for="RantId" />
             <div class="form-group">
                 <label asp-for="Summary" class="control-label">First Draft</label>
-                <input asp-for="Summary" class="form-control" />
+                <textarea id="input-fields" asp-for="Summary" class="form-control" ></textarea>
                 <span asp-validation-for="Summary" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Review" class="control-label">Second Draft With Rage Controlled</label>
-                <input asp-for="Review" class="form-control" />
+                <textarea id= "input-fields" asp-for="Review" class="form-control" ></textarea>
                 <span asp-validation-for="Review" class="text-danger"></span>
             </div>
             <div class="form-group">

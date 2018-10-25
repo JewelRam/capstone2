@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BitchAbout.Data;
 using BitchAbout.Models;
+using BitchAbout.Models.ViewModels;
 
 namespace BitchAbout.Views
 {
@@ -20,9 +21,18 @@ namespace BitchAbout.Views
         }
 
         // GET: Rants
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Rant.ToListAsync());
+            RantListViewModel rantListViewModel = new RantListViewModel(_context);
+            return View(rantListViewModel);
+
+        }
+        // GET: Rants
+        public IActionResult ProfRantList()
+        {
+            RantProfRantListViewModel profRantListViewModel = new RantProfRantListViewModel(_context);
+            return View(profRantListViewModel);
+
         }
 
         // GET: Rants/Details/5

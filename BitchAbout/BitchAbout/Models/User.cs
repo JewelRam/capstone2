@@ -22,9 +22,6 @@ namespace BitchAbout.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required]
-        public string Email { get; set; }
-
         public virtual ICollection<Rant> AllRants { get; set; }
 
     }
