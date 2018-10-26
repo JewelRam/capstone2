@@ -3,9 +3,14 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div id="">
-    <h2>Look At All The Bullshit Weighing You Down</h2>
 
+    <div id="panel" class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title">Look At All The Bullshit Weighing You Down</h3>
+        </div>
+        <div class="panel-body">
+           
+       
     <table class="table">
         <thead>
             <tr>
@@ -15,10 +20,10 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Rant.Summary)
                 </th>
-                <th>
+                @*<th>
                         @Html.DisplayNameFor(model => model.Rant.Review)
-                    </th>
-                <th></th>
+                    </th>*@
+
             </tr>
         </thead>
         <tbody>
@@ -36,7 +41,7 @@
                         </td>*@
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.RantId">Still Pissed</a> |
-                        <a asp-action="Details" asp-route-id="@item.RantId">Details</a> |
+                        @*<a asp-action="Details" asp-route-id="@item.RantId">Details</a> |*@
                         <a asp-action="Delete" asp-route-id="@item.RantId">Over It</a>
                     </td>
                 </tr>
@@ -44,3 +49,5 @@
         </tbody>
     </table>
 </div>
+ </div>
+   

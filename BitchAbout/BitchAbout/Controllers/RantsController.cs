@@ -30,15 +30,17 @@ namespace BitchAbout.Views
         // GET: Rants
         public IActionResult ProfRantList()
         {
+           
             RantProfRantListViewModel profRantListViewModel = new RantProfRantListViewModel(_context);
             return View(profRantListViewModel);
 
         }
 
         // GET: Rants/Details/5
-        public async Task<IActionResult> Details()
+        public async Task<IActionResult> Details(int? id)
         {
-            return View(await _context.Rant.ToListAsync());
+            RantDetailsViewModel rantDetailsViewModel = new RantDetailsViewModel(_context);
+            return View(rantDetailsViewModel);
         }
 
         // GET: Rants/Create
@@ -54,6 +56,7 @@ namespace BitchAbout.Views
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Summary")] Rant rant)
         {
+
             ModelState.Remove("DateCreated");
             if (ModelState.IsValid)
             {
@@ -88,6 +91,8 @@ namespace BitchAbout.Views
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("RantId,DateCreated,Summary,Review")] Rant rant)
         {
+            
+
             if (id != rant.RantId)
             {
                 return NotFound();
@@ -97,6 +102,7 @@ namespace BitchAbout.Views
             {
                 try
                 {
+                   
                     _context.Update(rant);
                     await _context.SaveChangesAsync();
                 }

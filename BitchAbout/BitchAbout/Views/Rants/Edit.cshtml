@@ -20,14 +20,19 @@
             <input type="hidden" asp-for="RantId" />
             <div class="form-group">
                 <label asp-for="Summary" class="control-label">First Draft</label>
-                <textarea id="input-fields" asp-for="Summary" class="form-control" ></textarea>
+                <textarea id="input-fields" asp-for="Summary" class="form-control"></textarea>
                 <span asp-validation-for="Summary" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Review" class="control-label">Second Draft With Rage Controlled</label>
-                <textarea id= "input-fields" asp-for="Review" class="form-control" ></textarea>
+                <textarea id="input-fields" asp-for="Review" class="form-control"></textarea>
                 <span asp-validation-for="Review" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input type="hidden" asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div> 
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>

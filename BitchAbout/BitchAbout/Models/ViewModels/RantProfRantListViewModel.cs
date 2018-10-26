@@ -12,9 +12,11 @@ namespace BitchAbout.Models.ViewModels
 
         public IEnumerable<Rant> Prof_Rants { get; set; }
 
+
         public RantProfRantListViewModel(ApplicationDbContext context)
         {
-            Prof_Rants = context.Rant;
+            Prof_Rants = context.Rant.Where(p => p.Review != null);
+            //Prof_Rants = context.Rant;
 
 
         }

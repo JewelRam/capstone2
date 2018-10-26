@@ -3,41 +3,45 @@
 @{
     ViewData["Title"] = "ProfRantList";
 }
-<div id="">
-    <h2>Attempted "Professional" Rants</h2>
-
-    <table class="table">
-        <thead>
+<div id="panel" class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">Attempted "Professional" Rants</h3>
+    </div>
+    <div class="panel-body">
+   
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                    @Html.DisplayNameFor(model => model.Rant.DateCreated)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Rant.Summary)
+                </th>*@
+            <th>
+                    @Html.DisplayNameFor(model => model.Rant.Review)
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Prof_Rants)
+        {
             <tr>
-               @*<th>
-                        @Html.DisplayNameFor(model => model.DateCreated)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Rant.Summary)
-                    </th>*@
-                    @*<th>
-                        @Html.DisplayNameFor(model => model.Rant.Review)
-                    </th>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Review)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.RantId">Still Pissed</a> |*@
+                    @*<a asp-action="Details" asp-route-id="@item.RantId">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.RantId">Over It</a>
+                </td>
             </tr>
-        </thead>
-      <tbody>
-            @foreach (var item in Model.Prof_Rants)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateCreated)
-                    </td>
-                    
-                    <td>
-                            @Html.DisplayFor(modelItem => item.Review)
-                        </td>
-                    <td>
-                        @*<a asp-action="Edit" asp-route-id="@item.RantId">Still Pissed</a> |*@
-                        @*<a asp-action="Details" asp-route-id="@item.RantId">Details</a> |*@
-                        <a asp-action="Delete" asp-route-id="@item.RantId">Over It</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        }
+    </tbody>
+</table>
+ </div>
+ </div>
