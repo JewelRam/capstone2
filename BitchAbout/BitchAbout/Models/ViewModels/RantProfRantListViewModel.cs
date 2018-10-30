@@ -16,9 +16,7 @@ namespace BitchAbout.Models.ViewModels
         public RantProfRantListViewModel(ApplicationDbContext context)
         {
             Prof_Rants = context.Rant.Where(p => p.Review != null);
-            //Prof_Rants = context.Rant;
-
-
+           
         }
     }
     
