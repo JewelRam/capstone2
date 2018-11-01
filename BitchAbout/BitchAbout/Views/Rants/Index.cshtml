@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-    <div id="panel" class="panel panel-danger">
+    <div id="panel" class="panel panel-success">
         <div class="panel-heading">
             <h3 class="panel-title">Look At All The Bullshit Weighing You Down</h3>
         </div>
@@ -40,7 +40,7 @@
                             @Html.DisplayFor(modelItem => item.Review)
                         </td>*@
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.RantId">Still Pissed</a> |
+                        <a asp-action="Edit" asp-route-id="@item.RantId" id="still-mad-button">Still Pissed</a> |
                         @*<a asp-action="Details" asp-route-id="@item.RantId">Details</a> |*@
                         <a asp-action="Delete" asp-route-id="@item.RantId">Over It</a>
                     </td>

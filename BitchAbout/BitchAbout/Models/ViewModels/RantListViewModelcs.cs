@@ -12,9 +12,9 @@ namespace BitchAbout.Models.ViewModels
         public Rant Rant { get; set; }
         public IEnumerable<Rant> Rants { get; set; }
 
-        public RantListViewModel(ApplicationDbContext context)
+        public RantListViewModel(ApplicationDbContext context, ApplicationUser User)
         {
-            Rants = context.Rant;
+            Rants = context.Rant.Where(u => u.ApplicationUserId == User.Id);
 
 
         }

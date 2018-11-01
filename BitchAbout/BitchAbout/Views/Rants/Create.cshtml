@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Create";
 }
-<div id="home-page">
+
     <h2>New Rant</h2>
 
     <h1>What Pissed You Off Today?</h1>
@@ -31,12 +31,12 @@
             </form>
         </div>
     </div>
-    <h4>Here are some helpful links for calming down:</h4>
+    <h4 id="helpful-links">Here are some helpful links for calming down:</h4>
    <button id="youtube-button"> <a target="_blank" href="https://www.youtube.com/watch?v=ig_EX-8jEkM">Animal Fails</a></button><br />
     <button id="youtube-button"><a target="_blank" href="https://www.youtube.com/watch?v=mqyg4IEgOrw">Girl Fails</a></button><br />
   <button id="youtube-button"> <a target="_blank" href="https://www.youtube.com/watch?v=mqyg4IEgOrw">Scare Pranks</a></button>
 
-</div>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -12,9 +12,11 @@ using Microsoft.EntityFrameworkCore;
 using BitchAbout.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using BitchAbout.Models;
 
 namespace BitchAbout
 {
+ 
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -37,7 +39,8 @@ namespace BitchAbout
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -57,7 +60,6 @@ namespace BitchAbout
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
@@ -67,7 +69,7 @@ namespace BitchAbout
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Rants}/{action=Create}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
