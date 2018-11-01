@@ -14,7 +14,7 @@ namespace BitchAbout.Data
         { }
                     public DbSet<ApplicationUser> ApplicationUser { get; set; }
                     public DbSet<Rant> Rant { get; set; }
-    
-    
-}
+
+
+    }
 }

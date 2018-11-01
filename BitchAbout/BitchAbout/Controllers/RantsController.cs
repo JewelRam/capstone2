@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using BitchAbout.Data;
 using BitchAbout.Models;
 using BitchAbout.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace BitchAbout.Views
 {
@@ -15,19 +17,37 @@ namespace BitchAbout.Views
     {
         private readonly ApplicationDbContext _context;
 
-        public RantsController(ApplicationDbContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public RantsController(
+            ApplicationDbContext context,
+            UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
         // GET: Rants
-        public IActionResult Index()
+        [HttpGet]
+        [AutoValidateAntiforgeryToken]
+        [Authorize]
+        public async Task<IActionResult> Index()
         {
-            RantListViewModel rantListViewModel = new RantListViewModel(_context);
-            return View(rantListViewModel);
+             ApplicationUser user = await GetCurrentUserAsync();
 
-        }
+            RantListViewModel rantListViewModel = new RantListViewModel(_context, user);
+
+            rantListViewModel.Rants = await _context.Rant.Where(users => users.ApplicationUserId == user.Id).ToListAsync();
+            return View(rantListViewModel);
+        
+
+    }
         // GET: Rants
+        [HttpGet]
+        [AutoValidateAntiforgeryToken]
+        [Authorize]
         public IActionResult ProfRantList()
         {
            
@@ -44,6 +64,8 @@ namespace BitchAbout.Views
         }
 
         // GET: Rants/Create
+        [Authorize]
+
         public IActionResult Create()
         {
             return View();
@@ -54,13 +76,18 @@ namespace BitchAbout.Views
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Summary")] Rant rant)
+        [Authorize]
+
+        public async Task<IActionResult> Create([Bind("Summary, ApplicationUserId")] Rant rant)
         {
 
             ModelState.Remove("DateCreated");
             if (ModelState.IsValid)
             {
-                rant.DateCreated = DateTime.Now;
+                ApplicationUser user = await GetCurrentUserAsync();
+                rant.ApplicationUserId = user.Id;
+                var Date = DateTime.Now;
+                rant.DateCreated = Date;
                 _context.Add(rant);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -89,7 +116,7 @@ namespace BitchAbout.Views
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RantId,DateCreated,Summary,Review")] Rant rant)
+        public async Task<IActionResult> Edit(int id, [Bind("RantId,Summary,DateCreated,Review")] Rant rant)
         {
             
 
@@ -102,7 +129,9 @@ namespace BitchAbout.Views
             {
                 try
                 {
-                   
+                    ApplicationUser user = await GetCurrentUserAsync();
+                    rant.ApplicationUserId = user.Id;
+
                     _context.Update(rant);
                     await _context.SaveChangesAsync();
                 }
