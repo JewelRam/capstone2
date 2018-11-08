@@ -12,3 +12,5 @@ Steps for using:
 
 5. If the database needs to be rebuilt, double check its been deleted and run dotnet restore, then run update-database
 
+   When the app starts you will be brought to the Home page where you create your rants. Once you've created one you will be brought to your "baggage" where you can either do actions for being "still pissed" or "over it"
+
